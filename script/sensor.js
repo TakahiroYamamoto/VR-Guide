@@ -7,10 +7,13 @@ window.addEventListener("deviceorientation", function(event) {
   "方位（東西南北:0～360）："+ orientation.toFixed(1) +"<br />" +
   "ピッチ（x軸回りの回転角度:-90～90）："+ pitch.toFixed(1) +"<br />" +
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
-  if(orientation.toFixed(1) < 180) {
-    $("absoluteMuki").css("transform", "rotate(90deg)");
-  }
-  else {
-    $("absoluteMuki").css({"transform":"rotate(90deg)"");
-  }
 });
+
+$("div").hover(
+	function (){
+		$("div").css("background-color", "#FC6");
+	},
+	function (){
+		$("div").css("background-color", "#09C");
+	}
+);
