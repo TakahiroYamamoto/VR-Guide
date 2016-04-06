@@ -7,15 +7,5 @@ window.addEventListener("deviceorientation", function(event) {
   "方位（東西南北:0～360）："+ orientation.toFixed(1) +"<br />" +
   "ピッチ（x軸回りの回転角度:-90～90）："+ pitch.toFixed(1) +"<br />" +
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
-});
-
-jQuery(function ($) {
-  $("div").hover(
-    function (){
-      $("div").css("background-color", "#FC6");
-    },
-    function (){
-      $("div").css("background-color", "#09C");
-    }
-  );
+  $("div").css({transform:'rotate(' + (now * 1080) + 'deg)'});
 });
