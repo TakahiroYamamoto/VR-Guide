@@ -14,9 +14,18 @@ body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
     top: 0px;
 }
 
+.absoluteHoui {
+    position: absolute;
+    color: #BDE2FF;
+    left: 0px;
+    top: 0px;
+}
+
+
 .relative {
     position: relative;
     left: 40px;
+    top: 40px;
     width: 300px;
 }
 
