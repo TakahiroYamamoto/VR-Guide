@@ -16,7 +16,7 @@ body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
 
 .relative {
     position: relative;
-    left: 50px;
+    left: 40px;
     width: 300px;
 }
 
