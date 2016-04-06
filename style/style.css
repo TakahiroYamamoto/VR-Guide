@@ -7,6 +7,14 @@ body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
     top: 0px;
 }
 
+.absoluteMuki {
+    position: absolute;
+    color: #BDE2FF;
+    transform: rotate(90.0deg);
+    left: 0px;
+    top: 0px;
+}
+
 .relative {
     position: relative;
     width: 300px;
