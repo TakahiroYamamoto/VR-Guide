@@ -9,11 +9,13 @@ window.addEventListener("deviceorientation", function(event) {
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
 });
 
-$("div").hover(
-	function (){
-		$("div").css("background-color", "#FC6");
-	},
-	function (){
-		$("div").css("background-color", "#09C");
-	}
-);
+jQuery(function ($) {
+  $("div").hover(
+    function (){
+      $("div").css("background-color", "#FC6");
+    },
+    function (){
+      $("div").css("background-color", "#09C");
+    }
+  );
+});
