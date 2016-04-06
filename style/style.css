@@ -9,7 +9,7 @@ body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
 
 .relative {
     position: relative;
-    width: 500px;
+    width: 300px;
 }
 
 .absoluteText1 {
