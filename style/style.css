@@ -10,7 +10,6 @@ body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
 .absoluteMuki {
     position: absolute;
     color: #BDE2FF;
-    transform: rotate(90.0deg);
     left: 0px;
     top: 0px;
 }

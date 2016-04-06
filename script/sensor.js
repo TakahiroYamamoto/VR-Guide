@@ -8,9 +8,9 @@ window.addEventListener("deviceorientation", function(event) {
   "ピッチ（x軸回りの回転角度:-90～90）："+ pitch.toFixed(1) +"<br />" +
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
   if(orientation.toFixed(1) < 180) {
-    $("div").css("background-color", "#FC6");
+    $("absoluteMuki").css("transform", "rotate(90deg)");
   }
   else {
-    $("div").css("background-color", "#000");
+    $("absoluteMuki").css("transform", "rotate(-90deg)");
   }
 });
