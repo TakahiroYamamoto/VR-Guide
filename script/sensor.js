@@ -11,6 +11,6 @@ window.addEventListener("deviceorientation", function(event) {
     $("absoluteMuki").css("transform", "rotate(90deg)");
   }
   else {
-    $("absoluteMuki").css({"transform":rotate(90deg));
+    $("absoluteMuki").css({"transform":"rotate(90deg)"");
   }
 });
