@@ -1,0 +1,63 @@
+body { background-color: #ffffff; padding: 0; margin: 0; overflow: hidden; }
+
+.absolute {
+    position: absolute;
+    color: #BDE2FF;
+    left: 0px;
+    top: 0px;
+}
+
+.relative {
+    position: relative;
+    width: 500px;
+}
+
+.absoluteText1 {
+    position: absolute;
+    color: #BDE2FF;
+    text-shadow:0 0 5px #BDE2FF,0 0 40px #BDE2FF,0 0 60px #BDE2FF,0 0 100px #BDE2FF,0 0 120px #BDE2FF;
+    font-size: 40px;
+    left: 85px;
+    top: 60px;
+}
+
+
+.absoluteText2 {
+    position: absolute;
+    color: #BDE2FF;
+    text-shadow:0 0 5px #BDE2FF,0 0 40px #BDE2FF,0 0 60px #BDE2FF,0 0 100px #BDE2FF,0 0 120px #BDE2FF;
+    font-size: 35px;
+    left: 167px;
+    bottom: 45px;
+}
+
+
+
+.load {
+    -webkit-animation: spin 7.5s linear infinite;
+    -moz-animation: spin 7.5s linear infinite;
+    -ms-animation: spin 7.5s linear infinite;
+    -o-animation: spin 7.5s linear infinite;
+    animation: spin 7.5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+	0% {-moz-transform: rotate(0deg);}
+	100% {-moz-transform: rotate(360deg);}
+}
+@-ms-keyframes spin {
+	0% {-ms-transform: rotate(0deg);}
+	100% {-ms-transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+	0% {-o-transform: rotate(0deg);}
+	100% {-o-transform: rotate(360deg);}
+}
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
