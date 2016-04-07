@@ -1,5 +1,5 @@
 window.addEventListener("deviceorientation", function(event) {
-  var orientation = event.alpha;
+  var orientation = event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iRoll = 90 + parseInt(pitch.toFixed(1));
