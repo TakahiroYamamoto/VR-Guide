@@ -29,6 +29,7 @@ body { background-color: #fff; padding: 0; margin: 0; overflow: hidden; }
     width:300px;
     height:300px;
     background-color: #000;
+    -webkit-transform:rotateX(45.9deg);
 }
 
 div.perse {
@@ -37,7 +38,7 @@ div.perse {
   left: 100px;
   top: 40px;
   -webkit-transform-style: preserve-3d;
-  -webkit-perspective: 300;
+  -webkit-perspective: 2000;
   -webkit-transition: -webkit-transform 1s linear
 }
 
