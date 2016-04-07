@@ -9,6 +9,6 @@ window.addEventListener("deviceorientation", function(event) {
   "ピッチ（x軸回りの回転角度:-90～90）："+ pitch.toFixed(1) +"<br />" +
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
   $(".absoluteHoui").css({transform:'rotate(' + (orientation.toFixed(1)) + 'deg)'});
-  $(".relative").css({-webkit-transform:'rotate(' + (pitch.toFixed(1)) + 'deg)'});
+  $(".relative").css({-webkit-transform:'rotateX(' + (pitch.toFixed(1)) + 'deg)'});
 
 });
