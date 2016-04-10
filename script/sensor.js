@@ -1,8 +1,7 @@
 
-var orientation = 0;
 
 window.addEventListener("deviceorientation", function(event) {
-  orientation = event.webkitCompassHeading;
+  var orientation = event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iRoll = 90 + parseInt(pitch.toFixed(1));
@@ -13,5 +12,14 @@ window.addEventListener("deviceorientation", function(event) {
   "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
   $(".absoluteHoui").css({transform:'rotate(' + (orientation.toFixed(1)) + 'deg)'});
   $(".relative").css({"-webkit-transform":'rotateX(' + (iRoll) + 'deg)'});
+
+});
+
+var watchID = navigator.geolocation.watchPosition(function(position) {
+  var myLatitude = 35.55475412985779 - position.coords.latitude;
+  var myLongitude = 139.67818632651213 - position.coords.longitude;
+  double radian = Math.atan2(myLatitude,myLongitude);
+  double degree = (radian * 180d / Math.PI);
+  $(".absoluteMuki").css({transform:'rotate(' + degree + 'deg)'});
 
 });
