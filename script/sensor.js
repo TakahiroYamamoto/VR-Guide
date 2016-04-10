@@ -4,21 +4,22 @@ window.addEventListener("deviceorientation", function(event) {
   var orientation = event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
-  var iRoll = 90 + parseInt(pitch.toFixed(1));
+  var iRoll = 90 + pitch;
   var result=document.getElementById("result");
   result.innerHTML = "方位(°)<br />"+
-  "方位（東西南北:0～360）："+ orientation.toFixed(1) +"<br />" +
-  "ピッチ（x軸回りの回転角度:-90～90）："+ pitch.toFixed(1) +"<br />" +
-  "ロール（y軸回りの回転角度：-90～270）："+ roll.toFixed(1);
-  $(".absoluteHoui").css({transform:'rotate(' + (orientation.toFixed(1)) + 'deg)'});
-  $(".relative").css({"-webkit-transform":'rotateX(' + (iRoll) + 'deg)'});
+  $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
+  //$(".relative").css({"-webkit-transform":'rotateX(' + (iRoll) + 'deg)'});
 
 });
 
-navigator.geolocation.getCurrentPosition(is_success,is_error);
+option = {
+  enableHighAccuracy: false,
+  timeout: 5000,
+  maximumAge: 0
+};
+navigator.geolocation.watchPosition(success, error, option);
 
-
-function is_success(position) {
+function success(position) {
 	var result = '結果';
 	result += '経度：' + position.coords.latitude + '<br>';
 	result += '緯度：' + position.coords.longitude + '<br>';
@@ -29,21 +30,23 @@ function is_success(position) {
 	result += '速度：' + position.coords.speed + '<br>';
 
 	document.getElementById('result2').innerHTML = result;
-
+  var myLatitude = 35.55475412985779 - position.coords.latitude;
+  var myLongitude = 139.67818632651213 - position.coords.longitude;
+  var radian = Math.atan2(myLatitude,myLongitude);
+  var degree = (radian * 180.0 / Math.PI);
+  $(".absoluteMuki").css({transform:'rotate(' + degree + 'deg)'});
 }
 
-function is_error(error) {
-	var result = "";
-	switch(error.code) {
-		case 1:
-			result = '位置情報の取得が許可されていません';
-		break;
-		case 2:
-			result = '位置情報の取得に失敗しました';
-		break;
-		case 3:
-			result = 'タイムアウトしました';
-		break;
-	}
-	document.getElementById('result2').innerHTML = result;
+// 位置情報の取得に失敗した場合の処理
+function error(error){
+ var e = "";
+ if (error.code == 1) { //1＝位置情報取得が許可されてない（ブラウザの設定）
+  e = "位置情報が許可されてません";
+ }
+ if (error.code == 2) { //2＝現在地を特定できない
+  e = "現在位置を特定できません";
+ }
+ if (error.code == 3) { //3＝位置情報を取得する前にタイムアウトになった場合
+  e = "位置情報を取得する前にタイムアウトになりました";
+ }
 }
