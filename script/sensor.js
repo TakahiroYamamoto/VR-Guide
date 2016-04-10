@@ -1,6 +1,6 @@
-var orientation;
+
 window.addEventListener("deviceorientation", function(event) {
-  window["orientation"] = 360.0 - event.webkitCompassHeading;
+  orientation = 360.0 - event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iPitch = 90.0 + pitch;
@@ -9,7 +9,7 @@ window.addEventListener("deviceorientation", function(event) {
   result += 'roll：' + roll + '<br>';
 	result += 'pitch：' + iPitch + '<br>';
   document.getElementById("result").innerHTML = result;
-  $(".absoluteHoui").css({transform:'rotate(' + (window["orientation"]) + 'deg)'});
+  $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
   //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
 
 });
