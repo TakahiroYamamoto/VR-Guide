@@ -15,12 +15,3 @@ window.addEventListener("deviceorientation", function(event) {
   $(".relative").css({"-webkit-transform":'rotateX(' + (iRoll) + 'deg)'});
 
 });
-
-var watchID = navigator.geolocation.watchPosition(function(position) {
-  var myLatitude = 35.55475412985779 - position.coords.latitude;
-  var myLongitude = 139.67818632651213 - position.coords.longitude;
-  double radian = Math.atan2(myLatitude,myLongitude);
-  double degree = (radian * 180d / Math.PI) + orientation;
-  $(".absoluteMuki").css({transform:'rotate(' + degree + 'deg)'});
-
-});
