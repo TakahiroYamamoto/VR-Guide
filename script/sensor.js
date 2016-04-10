@@ -1,15 +1,15 @@
-
+var g_orientation = 0.0;
 window.addEventListener("deviceorientation", function(event) {
-  orientation = 360.0 - event.webkitCompassHeading;
+  g_orientation = 360.0 - event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iPitch = 90.0 + pitch;
   var result;
-  result = 'orientation：'+ orientation + '<br>';
+  result = 'orientation：'+ g_orientation + '<br>';
   result += 'roll：' + roll + '<br>';
 	result += 'pitch：' + iPitch + '<br>';
   document.getElementById("result").innerHTML = result;
-  $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
+  $(".absoluteHoui").css({transform:'rotate(' + (g_orientation) + 'deg)'});
   //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
 
 });
@@ -36,7 +36,7 @@ function success(position) {
   var myLongitude = 139.67818632651213 - position.coords.longitude;
   var radian = Math.atan2(myLatitude,myLongitude);
   var degree = (radian * 180.0 / Math.PI);
-  $(".absoluteMuki").css({transform:'rotate(' + (degree + orientation) + 'deg)'});
+  $(".absoluteMuki").css({transform:'rotate(' + (degree + g_orientation) + 'deg)'});
 }
 
 // 位置情報の取得に失敗した場合の処理
