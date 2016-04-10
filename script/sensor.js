@@ -1,17 +1,17 @@
-var g_orientation = 0.0;
+var g_degree = 0.0;
 window.addEventListener("deviceorientation", function(event) {
-  g_orientation = 360.0 - event.webkitCompassHeading;
+  var orientation = 360.0 - event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iPitch = 90.0 + pitch;
   var result;
-  result = 'orientation：'+ g_orientation + '<br>';
+  result = 'orientation：'+ orientation + '<br>';
   result += 'roll：' + roll + '<br>';
 	result += 'pitch：' + iPitch + '<br>';
   document.getElementById("result").innerHTML = result;
-  $(".absoluteHoui").css({transform:'rotate(' + (g_orientation) + 'deg)'});
+  $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
   //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
-
+  $(".absoluteMuki").css({transform:'rotate(' + (g_degree + orientation) + 'deg)'});
 });
 
 option = {
@@ -35,8 +35,7 @@ function success(position) {
   var myLatitude = 35.55475412985779 - position.coords.latitude;
   var myLongitude = 139.67818632651213 - position.coords.longitude;
   var radian = Math.atan2(myLatitude,myLongitude);
-  var degree = (radian * 180.0 / Math.PI);
-  $(".absoluteMuki").css({transform:'rotate(' + (degree + g_orientation) + 'deg)'});
+  g_degree = (radian * 180.0 / Math.PI);
 }
 
 // 位置情報の取得に失敗した場合の処理
