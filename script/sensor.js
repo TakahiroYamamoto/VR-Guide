@@ -10,7 +10,7 @@ window.addEventListener("deviceorientation", function(event) {
 	result += 'pitch：' + iPitch + '<br>';
   document.getElementById("result").innerHTML = result;
   $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
-  $(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
+  //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
 
 });
 
