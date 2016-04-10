@@ -1,8 +1,6 @@
 
-var orientation = 0.0;
-
 window.addEventListener("deviceorientation", function(event) {
-  orientation = event.webkitCompassHeading;
+  var orientation = 360.0 - event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iPitch = 90.0 + pitch;
