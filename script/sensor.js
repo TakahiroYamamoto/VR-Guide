@@ -1,7 +1,8 @@
 
+var orientation = 0.0;
 
 window.addEventListener("deviceorientation", function(event) {
-  var orientation = event.webkitCompassHeading;
+  orientation = -event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
   var iRoll = 90 + pitch;
@@ -34,7 +35,7 @@ function success(position) {
   var myLongitude = 139.67818632651213 - position.coords.longitude;
   var radian = Math.atan2(myLatitude,myLongitude);
   var degree = (radian * 180.0 / Math.PI);
-  $(".absoluteMuki").css({transform:'rotate(' + degree + 'deg)'});
+  $(".absoluteMuki").css({transform:'rotate(' + (degree + orientation) + 'deg)'});
 }
 
 // 位置情報の取得に失敗した場合の処理
