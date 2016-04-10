@@ -29,11 +29,6 @@ function is_success(position) {
 	result += '速度：' + position.coords.speed + '<br>';
 
 	document.getElementById('result2').innerHTML = result;
-  var myLatitude = 35.55475412985779 - position.coords.latitude;
-  var myLongitude = 139.67818632651213 - position.coords.longitude;
-  double radian = Math.atan2(myLatitude,myLongitude);
-  double degree = (radian * 180d / Math.PI);
-  $(".absoluteMuki").css({transform:'rotate(' + degree + 'deg)'});
 }
 
 function is_error(error) {
