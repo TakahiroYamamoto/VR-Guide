@@ -32,10 +32,12 @@ function success(position) {
 	result += '速度：' + position.coords.speed + '<br>';
 
 	document.getElementById('result2').innerHTML = result;
-  var myLatitude = 35.55475412985779 - position.coords.latitude;
-  var myLongitude = 139.67818632651213 - position.coords.longitude;
-  var radian = Math.atan2(myLatitude,myLongitude);
+  var myLatitude = 35.55475412985779;
+  var myLongitude = 139.67818632651213;
+  var radian = Math.atan2(myLatitude - position.coords.latitude,myLongitude - position.coords.longitude);
   g_degree = (radian * 180.0 / Math.PI);
+  document.getElementById('distanceText').innerHTML = calc_distance(myLatitude,myLongitude,position.coords.latitude,position.coords.longitude);
+  $(".absoluteText1").html(calc_distance(myLatitude,myLongitude,position.coords.latitude,position.coords.longitude));
 }
 
 // 位置情報の取得に失敗した場合の処理
@@ -50,4 +52,46 @@ function error(error){
  if (error.code == 3) { //3＝位置情報を取得する前にタイムアウトになった場合
   e = "位置情報を取得する前にタイムアウトになりました";
  }
+}
+
+// 距離計算関数
+// 参考サイト：http://www.mk-mode.com/octopress/2013/07/12/google-maps-api-calc-distance/
+function calc_distance(lat_1, lng_1, lat_2, lng_2) {
+  // 測地系定数
+  // GRS80 ( 世界測地系 ) <- 現在の日本での標準
+  const RX = 6378137.000000  // 赤道半径
+  const RY = 6356752.314140  // 極半径
+  // ベッセル楕円体 ( 旧日本測地系 ) <- 以前の日本での標準
+  //const RX = 6377397.155000  // 赤道半径
+  //const RY = 6356079.000000  // 極半径
+  // WGS84 ( GPS ) <- Google はこの測地系
+  //const RX = 6378137.000000  // 赤道半径
+  //const RY = 6356752.314245  // 極半径
+
+  // 2点の経度の差を計算 ( ラジアン )
+  var a_x = lng_1 * Math.PI / 180 - lng_2 * Math.PI / 180;
+
+  // 2点の緯度の差を計算 ( ラジアン )
+  var a_y = lat_1 * Math.PI / 180 - lat_2 * Math.PI / 180;
+
+  // 2点の緯度の平均を計算
+  var p = (lat_1 * Math.PI / 180 + lat_2 * Math.PI / 180) / 2;
+
+  // 離心率を計算
+  var e = Math.sqrt((RX * RX - RY * RY) / (RX * RX));
+
+  // 子午線・卯酉線曲率半径の分母Wを計算
+  var w = Math.sqrt(1 - e * e * Math.sin(p) * Math.sin(p));
+
+  // 子午線曲率半径を計算
+  var m = RX * (1 - e * e) / (w * w * w);
+
+  // 卯酉線曲率半径を計算
+  var n = RX / w;
+
+  // 距離を計算
+  var d  = Math.pow(a_y * m, 2) + Math.pow(a_x * n * Math.cos(p), 2);
+  d = Math.round(Math.sqrt(d)) / 1000;
+
+  return d;
 }
