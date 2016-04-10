@@ -2,14 +2,17 @@
 var orientation = 0.0;
 
 window.addEventListener("deviceorientation", function(event) {
-  orientation = -event.webkitCompassHeading;
+  orientation = 360.0-event.webkitCompassHeading;
   var pitch = event.beta;
   var roll= event.gamma;
-  var iRoll = 90 + pitch;
-  var result=document.getElementById("result");
-  result.innerHTML = "方位(°)<br />"+
+  var iPitch = 90.0 + pitch;
+  var result;
+  result = 'orientation：'+ orientation + '<br>';
+  result += 'roll：' + roll + '<br>';
+	result += 'pitch：' + iPitch + '<br>';
+  document.getElementById("result").innerHTML = result;
   $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
-  //$(".relative").css({"-webkit-transform":'rotateX(' + (iRoll) + 'deg)'});
+  $(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
 
 });
 
