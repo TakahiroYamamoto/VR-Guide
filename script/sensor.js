@@ -14,6 +14,7 @@ window.addEventListener("deviceorientation", function(event) {
   result = 'orientation：'+ orientation + '<br>';
   result += 'roll：' + roll + '<br>';
   result += 'pitch：' + iPitch + '<br>';
+  result += '矢印の角度' +g_degree+ '<br>';
   document.getElementById("result").innerHTML = result;
   $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
   //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
