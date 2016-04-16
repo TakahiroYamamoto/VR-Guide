@@ -17,7 +17,7 @@ window.addEventListener("deviceorientation", function(event) {
   document.getElementById("result").innerHTML = result;
   $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
   //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
-  $(".absoluteMuki").css({transform:'rotate(' + (orientation-g_degree) + 'deg)'});
+  $(".absoluteMuki").css({transform:'rotate(' + (orientation+g_degree) + 'deg)'});
 });
 
 option = {
