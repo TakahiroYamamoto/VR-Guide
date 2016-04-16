@@ -114,8 +114,7 @@ function geoDirection(lat1, lng1, lat2, lng2) {
 }
 
 function updateValue(){
-  var radian = Math.atan2(g_mylatitude,g_myLongitude,g_Latitude,g_Longitude);
-  g_degree = geoDirection()
+  g_degree = geoDirection(g_mylatitude,g_myLongitude,g_Latitude,g_Longitude);
   document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
   $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
 }
