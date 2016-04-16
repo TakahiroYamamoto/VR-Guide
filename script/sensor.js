@@ -101,7 +101,7 @@ function calc_distance(lat_1, lng_1, lat_2, lng_2) {
 }
 
 function updateValue(){
-  var radian = Math.atan2(g_myLatitude-g_Latitude,g_myLongitude-g_Longitude);
+  var radian = Math.atan2(g_myLongitude-g_Longitude,g_myLatitude-g_Latitude);
   g_degree = (radian * 180.0 / Math.PI);
   document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
   $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
