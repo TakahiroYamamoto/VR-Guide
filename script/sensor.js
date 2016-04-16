@@ -2,6 +2,9 @@ var g_degree = 0.0;
 var g_Latitude = 35.55475412985779;
 var g_Longitude = 139.67818632651213;
 
+var g_myLatitude = 35.55475412985779;
+var g_myLongitude = 139.67818632651213;
+
 window.addEventListener("deviceorientation", function(event) {
   var orientation = 360.0 - event.webkitCompassHeading;
   var pitch = event.beta;
@@ -34,11 +37,13 @@ function success(position) {
   result += '方角：' + position.coords.heading + '<br>';
   result += '速度：' + position.coords.speed + '<br>';
 
+  g_myLatitude = position.coords.latitude;
+  g_myLongitude = position.coords.longitude;
   document.getElementById('result2').innerHTML = result;
-  var radian = Math.atan2(g_Latitude - position.coords.latitude,g_Longitude - position.coords.longitude);
+  var radian = Math.atan2(g_Latitude - g_myLatitude,g_Longitude - g_myLongitude);
   g_degree = (radian * 180.0 / Math.PI);
-  document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,position.coords.latitude,position.coords.longitude);
-  $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,position.coords.latitude,position.coords.longitude));
+  document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
+  $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
 }
 
 // 位置情報の取得に失敗した場合の処理
@@ -97,35 +102,47 @@ function calc_distance(lat_1, lng_1, lat_2, lng_2) {
   return d;
 }
 
+function updateValue(){
+  var radian = Math.atan2(g_Latitude - g_myLatitude,g_Longitude - g_myLongitude);
+  g_degree = (radian * 180.0 / Math.PI);
+  document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
+  $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
+}
 
 $(function() {
   $('#myHouse').click(function(){
     g_Latitude = 35.55475412985779;
     g_Longitude = 139.67818632651213;
+    updateValue();
   });
 
   $('#Shinagawa').click(function(){
     g_Latitude = 35.6288;
     g_Longitude = 139.7388;
+    updateValue();
   });
 
   $('#Yokohama').click(function(){
     g_Latitude = 35.4650968;
     g_Longitude = 139.6202978;
+    updateValue();
   });
 
   $('#Shinkawasaki').click(function(){
     g_Latitude = 35.551696;
     g_Longitude = 139.671529;
+    updateValue();
   });
 
   $('#Musashikosugi').click(function(){
     g_Latitude = 35.5758809;
     g_Longitude = 139.659688;
+    updateValue();
   });
 
   $('#Nishiohi').click(function(){
     g_Latitude = 35.6017919;
     g_Longitude = 139.7218021;
+    updateValue();
   });
 });
