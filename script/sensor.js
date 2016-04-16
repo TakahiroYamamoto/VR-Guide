@@ -37,7 +37,7 @@ function success(position) {
   document.getElementById('result2').innerHTML = result;
   var radian = Math.atan2(g_Latitude - position.coords.latitude,g_Longitude - position.coords.longitude);
   g_degree = (radian * 180.0 / Math.PI);
-  document.getElementById('distanceText').innerHTML = calc_distance(myLatitude,myLongitude,position.coords.latitude,position.coords.longitude);
+  document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,position.coords.latitude,position.coords.longitude);
   $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,position.coords.latitude,position.coords.longitude));
 }
 
