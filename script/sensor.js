@@ -40,10 +40,7 @@ function success(position) {
   g_myLatitude = position.coords.latitude;
   g_myLongitude = position.coords.longitude;
   document.getElementById('result2').innerHTML = result;
-  var radian = Math.atan2(g_Latitude - g_myLatitude,g_Longitude - g_myLongitude);
-  g_degree = (radian * 180.0 / Math.PI);
-  document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
-  $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
+  updateValue();
 }
 
 // 位置情報の取得に失敗した場合の処理
@@ -103,7 +100,7 @@ function calc_distance(lat_1, lng_1, lat_2, lng_2) {
 }
 
 function updateValue(){
-  var radian = Math.atan2(g_Latitude - g_myLatitude,g_Longitude - g_myLongitude);
+  var radian = Math.atan2(g_myLatitude-g_Latitude,g_myLongitude-g_Longitude);
   g_degree = (radian * 180.0 / Math.PI);
   document.getElementById('distanceText').innerHTML = calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude);
   $(".absoluteText1").html(calc_distance(g_Latitude,g_Longitude,g_myLatitude,g_myLongitude));
