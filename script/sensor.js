@@ -1,3 +1,4 @@
+
 var g_degree = 0.0;
 var g_Latitude = 35.55475412985779;
 var g_Longitude = 139.67818632651213;
@@ -17,7 +18,7 @@ window.addEventListener("deviceorientation", function(event) {
   result += '矢印の角度' +g_degree+ '<br>';
   document.getElementById("result").innerHTML = result;
   $(".absoluteHoui").css({transform:'rotate(' + (orientation) + 'deg)'});
-  //$(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
+  $(".relative").css({"-webkit-transform":'rotateX(' + (iPitch) + 'deg)'});
   $(".absoluteMuki").css({transform:'rotate(' + (orientation+g_degree) + 'deg)'});
 });
 
